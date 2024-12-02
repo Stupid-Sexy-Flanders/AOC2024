@@ -1,12 +1,14 @@
+import sys
+sys.path.append("../")
+from AOC2024.get_input import get_input
 
 column_a = []
 column_b = []
 similarity_score = 0
 
-with open("data.txt", "r") as file:
-    lines = file.readlines()
+input = get_input(1).split("\n")
 
-for line in lines:
+for line in input:
     line = line.split("  ")
     column_a.append(int(line[0]))
     column_b.append(int(line[1]))
@@ -16,6 +18,6 @@ for x in column_a:
     for y in column_b:
         if x == y:
             appearances += 1
-    similarity_score = similarity_score + (x * appearances)
+    similarity_score += (x * appearances)
 
 print(similarity_score)
