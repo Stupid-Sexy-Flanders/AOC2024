@@ -14,10 +14,6 @@ for line in input:
     column_b.append(int(line[1]))
 
 for x in column_a:
-    appearances = 0
-    for y in column_b:
-        if x == y:
-            appearances += 1
-    similarity_score += (x * appearances)
+    similarity_score += (x * column_b.count(x))
 
 print(similarity_score)
