@@ -1,12 +1,14 @@
+import sys
+sys.path.append("../")
+from AOC2024.get_input import get_input
 
 column_a = []
 column_b = []
 total_difference = 0
 
-with open("data.txt", "r") as file:
-    lines = file.readlines()
+input = get_input(1).split("\n")
 
-for line in lines:
+for line in input:
     line = line.split("  ")
     column_a.append(int(line[0]))
     column_b.append(int(line[1]))
@@ -14,13 +16,7 @@ for line in lines:
 column_a.sort()
 column_b.sort()
 
-x = 0
-while x < 1000:
-    if column_a[x] > column_b[x]:
-        difference = column_a[x] - column_b[x]
-    else:
-        difference = column_b[x] - column_a[x]
-    total_difference = total_difference + difference
-    x += 1
+for (x, y) in zip(column_a, column_b):
+    total_difference += abs(x-y)
 
 print(total_difference)
